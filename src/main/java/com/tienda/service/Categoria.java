@@ -1,6 +1,7 @@
 
-package com.tienda.domain;
+package com.tienda.service;
 
+import com.tienda.domain.Producto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -42,22 +43,7 @@ public class Categoria implements Serializable{
     
     //Relacion de uno a muchos con la clase Producto
     @OneToMany (mappedBy = "categoria")
-    private List<Producto> producto;
-
-    public Integer getIdCategoria() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void setRutaImagen(String rutaImagen) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-
+    private List<Producto> productos;
             
     
 }
-
-
-
-
-

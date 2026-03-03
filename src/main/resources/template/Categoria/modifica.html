@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- Esta es la página principal del sitio web TechShop -->
+<html xlms="http://www.w3.org/1999/xhtml"
+      xlms:th="http://www.thymeleaf.org"
+      xlms:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecuirty6">
+    <head th:replace="~{general/fragmentos : : head}"/>
+
+    <body>
+        <header th:replace="~{general/fragmentos : : header}"/>
+        
+        <section th:replace="~{producto/fragmentos : : editar}"/>
+        <section th:replace="~{general/fragmentos : : mostrarToast}"/>
+        
+        <footer th:replace="~{general/fragmentos : : footer}"/>
+    </body>
+</html>

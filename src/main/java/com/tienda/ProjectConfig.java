@@ -17,35 +17,20 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
 
-    
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/ejemplo2").setViewName("ejemplo2");
         registry.addViewController("/multimedia").setViewName("multimedia");
         registry.addViewController("/iframes").setViewName("iframes");
-
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
-
-        
-        registry.addViewController("/categoria/listado").setViewName("categoria/listado");
-        registry.addViewController("/producto/listado").setViewName("producto/listado");
-
-        registry.addViewController("/pruebas/listado").setViewName("pruebas/listado");
-        registry.addViewController("/pruebas/listado2").setViewName("pruebas/listado2");
-
-        registry.addViewController("/usuario/listado").setViewName("usuario/listado");
-        registry.addViewController("/role/listado").setViewName("role/listado");
-        registry.addViewController("/usuario_role/asignar").setViewName("usuario_role/asignar");
-        registry.addViewController("/ruta/listado").setViewName("ruta/listado");
-        registry.addViewController("/constante/listado").setViewName("constante/listado");
     }
 
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-        resolver.setPrefix("classpath:/templates/");
+        resolver.setPrefix("classpath:/templates");
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);
         resolver.setOrder(0);
@@ -53,12 +38,10 @@ public class ProjectConfig implements WebMvcConfigurer {
         return resolver;
     }
 
-    
-
     @Bean
     public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(new Locale("es")); // Español por defecto
+        var slr = new SessionLocaleResolver();
+        slr.setDefaultLocale(Locale.getDefault());
         slr.setLocaleAttributeName("session.current.locale");
         slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
@@ -66,21 +49,23 @@ public class ProjectConfig implements WebMvcConfigurer {
 
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang"); 
+        var lci = new LocaleChangeInterceptor();
+        lci.setParamName("lang");
         return lci;
     }
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+    public void addInterceptors(InterceptorRegistry registro) {
+        registro.addInterceptor(localeChangeInterceptor());
     }
 
     @Bean("messageSource")
     public MessageSource messageSource() {
-        ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-        ms.setBasename("messages"); 
-        ms.setDefaultEncoding("UTF-8");
-        return ms;
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
+    
+
 }

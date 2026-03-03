@@ -1,9 +1,8 @@
-
-package com.tienda.service;
-
+package com.tienda.Desarrollo.service;
 
 import com.tienda.domain.Categoria;
 import com.tienda.repository.CategoriaRepository;
+import com.tienda.service.FirebaseStorageService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class CategoryService {
+public class CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;

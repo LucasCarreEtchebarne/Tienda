@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xlms="http://www.w3.org/1999/xhtml"
+      xlms:th="http://www.thymeleaf.org"
+      xlms:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecuirty6">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16x16.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96x96.png"/>
+        <link rel="icon" type="image/png" sizes="256x256" href="/fav/favicon-256x256.png"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/js/rutinas.js}"></script>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
 
-    <head th:replace="~{general/fragmentos :: head}"></head>
-
+        <head th:replace="~{general/fragmentos :: head}"/>
     <body>
-        <header th:replace="~{general/fragmentos :: header}"></header>
-
         
+        <header th:replace="~{general/fragmentos :: header}"></header>
+        
+        <section th:replace="~{consultas/fragmentos :: header}"></section>
+
+       
         <footer th:replace="~{general/fragmentos :: footer}"></footer>
-=======
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>Hola mundo </div>
->>>>>>> dbdaba43a97e0ba164c6ecf7eb21114c58640926
+        
     </body>
 </html>
