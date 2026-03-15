@@ -1,19 +1,7 @@
-
 package com.tienda.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.Data;
@@ -56,13 +44,5 @@ public class Producto implements Serializable {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    public Integer getIdProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); // 
-    }
-
-    public void setRutaImagen(String rutaImagen) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
+        
 }
-

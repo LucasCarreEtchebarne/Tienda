@@ -1,8 +1,8 @@
-package com.tienda.Desarrollo.service;
+
+package com.tienda.service;
 
 import com.tienda.domain.Categoria;
 import com.tienda.repository.CategoriaRepository;
-import com.tienda.service.FirebaseStorageService;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -38,20 +38,13 @@ public class CategoriaService {
     private FirebaseStorageService firebaseStorageService;
 
     @Transactional
-    public void save(Categoria categoria, MultipartFile imagenFile) 
-    {
+    public void save(Categoria categoria, MultipartFile imagenFile) {
         categoriaRepository.save(categoria);
-
-        if (!imagenFile.isEmpty()) 
-        { // Si no está vacío... pasaron una imagen...
-            try 
-            {
+        if (!imagenFile.isEmpty()) { // Si no está vacío... pasaron una imagen...
+            try {
                 String rutaImagen = firebaseStorageService.uploadImage(
-                        imagenFile,
-                        "categoria",
-                        categoria.getIdCategoria()
-                );
-
+                        imagenFile,"categoria",
+                        categoria.getIdCategoria());
                 categoria.setRutaImagen(rutaImagen);
                 categoriaRepository.save(categoria);
 

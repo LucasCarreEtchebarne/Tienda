@@ -1,7 +1,6 @@
 package com.tienda.controller;
 
 import com.tienda.service.ProductoService;
-import java.math.BigDecimal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +26,8 @@ public class ConsultaController {
     }
 
     @PostMapping("/consultaDerivada")
-    public String consultaDerivida(@RequestParam() BigDecimal precioInf,
-            @RequestParam() BigDecimal precioSup,
+    public String consultaDerivida(@RequestParam() double precioInf,
+            @RequestParam() double precioSup,
             Model model) {
         var productos = productoService.consultaDerivada(precioInf, precioSup);
         model.addAttribute("productos", productos);
@@ -38,9 +37,8 @@ public class ConsultaController {
     }
 
     @PostMapping("/consultaJPQL")
-    public String consultaJPQL(@RequestParam() BigDecimal precioInf,
-            @RequestParam() BigDecimal precioSup,
-            Model model) {
+    public String consultaJPQL(@RequestParam() double precioInf,
+            @RequestParam() double precioSup, Model model) {
         var productos = productoService.consultaJPQL(precioInf, precioSup);
         model.addAttribute("productos", productos);
         model.addAttribute("precioInf", precioInf);
@@ -49,8 +47,8 @@ public class ConsultaController {
     }
 
     @PostMapping("/consultaSQL")
-    public String consultaSQL(@RequestParam() BigDecimal precioInf,
-            @RequestParam() BigDecimal precioSup,
+    public String consultaSQL(@RequestParam() double precioInf,
+            @RequestParam() double precioSup,
             Model model) {
         var productos = productoService.consultaSQL(precioInf, precioSup);
         model.addAttribute("productos", productos);
