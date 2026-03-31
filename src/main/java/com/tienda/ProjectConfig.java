@@ -1,6 +1,9 @@
-package com.tienda;
+package com.tienda_losLunes;
 
+import com.tienda.domain.Ruta;
+import com.tienda.service.RutaService;
 import java.util.Locale;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +25,14 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 
+/*
+Internacionalizacion
+Mediante este ProjectConfig.java se deben incorporar los métodos que permitirán que el cambio de idioma tenga efecto desde el menu principal.
+*/
+
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
 
-    /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
@@ -33,11 +40,9 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/multimedia").setViewName("multimedia");
         registry.addViewController("/iframes").setViewName("iframes");
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/acceso_denegado").setViewName("acceso_denegado");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
     }
 
-    /* El siguiente método se utilizar para publicar en la nube, independientemente  */
     @Bean
     public SpringResourceTemplateResolver templateResolver_0() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
@@ -49,6 +54,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    //Determina el idioma por defecto de la sesion. Basandose en la actual ubicacion.
     @Bean
     public LocaleResolver localeResolver() {
         var slr = new SessionLocaleResolver();
@@ -58,6 +64,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         return slr;
     }
 
+    //Crea una vía para conocer como se determina el cambio de idioma del proyecto
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         var lci = new LocaleChangeInterceptor();
@@ -65,20 +72,21 @@ public class ProjectConfig implements WebMvcConfigurer {
         return lci;
     }
 
+    //Es el responsable de la inclusion del cambio del interceptor en el ambiente de ejecucion
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
     }
 
-    //Bean para poder acceder a los messages.properties en código...
+    //Incluye un metodo de uso a futuro con textos enviados desde clases java.
     @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("messages");
+        messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-
+    
     public static final String[] PUBLIC_URLS = {
         "/", "/index", "/fav/**", "/carrito/**", "/consultas/**", "/registro/**",
         "/js/**", "/webjars/**", "/login", "/acceso_denegado"
@@ -98,32 +106,40 @@ public class ProjectConfig implements WebMvcConfigurer {
         "/facturar/carrito"
     };
 
+    @Autowired
+    private RutaService rutaService;
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(request -> request
-                .requestMatchers(PUBLIC_URLS).permitAll()
-                .requestMatchers(ADMIN_URLS).hasRole("ADMIN")
-                .requestMatchers(ADMIN_OR_VENDEDOR_URLS).hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers(USUARIO_URLS).hasRole("USUARIO")
-                .anyRequest().authenticated()
-        ).formLogin(form -> form // Configuración de formulario de login
+        var rutas = rutaService.getRutas();
+        http.authorizeHttpRequests (requests -> {
+            for (Ruta ruta : rutas) {
+                if (ruta.isRequiereRol()) {
+                    requests.requestMatchers (ruta.getRuta()).hasRole(ruta.getRol (). getRol());
+                } else {
+                    requests.requestMatchers (ruta.getRuta()).permitAll();
+                }
+            }
+            requests.anyRequest(). authenticated();
+        });
+        http.formLogin(form ->  form //Configuracion de formulario de login
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/", true)
-                .failureUrl("/login?error=true")
+                .failureUrl ("/login?error=true")
                 .permitAll()
-        ).logout(logout -> logout // Configuración de logout
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout=true")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll()
-        ).exceptionHandling(exceptions -> exceptions // Manejo de excepciones
-                .accessDeniedPage("/acceso_denegado")
-        ).sessionManagement(session -> session // Configuración de sesiones
-                .maximumSessions(1)
-                .maxSessionsPreventsLogin(false)
-        );
+       ) .logout (logout -> logout //Configuracion de logout
+               .logoutUrl("/logout")
+               .logoutSuccessUrl("/login?logout=true")
+               .invalidateHttpSession(true)
+               .deleteCookies("JSESSIONID")
+               .permitAll()
+       ) .exceptionHandling(exceptions -> exceptions //Manejo de excepciones
+               .accessDeniedPage("/acceso_denegado")
+       ) .sessionManagement (session -> session //Configuracion de sesiones
+               .maximumSessions(1)
+               .maxSessionsPreventsLogin(false)
+       );
         return http.build();
     }
 
@@ -156,8 +172,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         return new InMemoryUserDetailsManager(admin, sales, user);
     }
 
+    
+    
+    
 }
-
-
-
-

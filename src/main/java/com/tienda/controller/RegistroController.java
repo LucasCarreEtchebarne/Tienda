@@ -1,4 +1,4 @@
-package com.tienda.controller;
+package com.tienda_losLunes.controller;
 
 import com.tienda.domain.Usuario;
 import com.tienda.service.RegistroService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.sprinAgframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/registro")
