@@ -1,7 +1,7 @@
-package com.tienda.controller;
+package com.tienda_losLunes.controller;
 
-import com.tienda.domain.Usuario;
-import com.tienda.service.UsuarioService;
+import com.tienda_losLunes.domain.Usuario;
+import com.tienda_losLunes .service.UsuarioService;
 import jakarta.validation.Valid;
 import java.util.Locale;
 import java.util.Optional;

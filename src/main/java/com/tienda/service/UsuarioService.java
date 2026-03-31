@@ -1,9 +1,9 @@
-package com.tienda.service;
+package com.tienda_losLunes.service;
 
-import com.tienda.domain.Rol;
-import com.tienda.domain.Usuario;
-import com.tienda.repository.RolRepository;
-import com.tienda.repository.UsuarioRepository;
+import com.tienda_losLunes.domain.Rol;
+import com.tienda_losLunes.domain.Usuario;
+import com.tienda_losLunes.repository.RolRepository;
+import com.tienda_losLunes.repository.UsuarioRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +64,7 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public boolean existeUsuarioPorUsernameOCorreo(String username,
             String correo) {
-        return usuarioRepository.existsByUsernameOrCorreo(username, correo);
+        return usuarioRepository.existByUsernameOrCorreo(username, correo);
     }
 
     @Transactional
@@ -88,7 +88,7 @@ public class UsuarioService {
                 throw new IllegalArgumentException("La contraseña es obligatoria para nuevos usuarios.");
             }
             //La primera vez como es activación no se encripta...
-            usuario.set Password(encriptaClave?passwordEncoder.encode(usuario.getPassword()):usuario.getPassword());
+            usuario.setPassword(encriptaClave?passwordEncoder.encode(usuario.getPassword()):usuario.getPassword());
             asignarRol = true;
         } else {
             if (usuario.getPassword() == null || usuario.getPassword().isBlank()) {

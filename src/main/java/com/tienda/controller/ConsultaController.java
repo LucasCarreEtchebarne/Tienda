@@ -1,6 +1,6 @@
 package com.tienda_losLunes.controller;
 
-import com.tienda.service.ProductoService;
+import com.tienda_losLunes.service.ProductoService;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
