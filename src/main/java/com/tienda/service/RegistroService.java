@@ -1,6 +1,7 @@
-package com.tienda.service;
+package com.tienda_losLunes.service;
 
-import com.tienda.domain.Usuario;
+import com.tienda.service.CorreoService;
+import com.tienda_losLunes.domain.Usuario;
 import jakarta.mail.MessagingException;
 import java.util.Locale;
 import java.util.Optional;

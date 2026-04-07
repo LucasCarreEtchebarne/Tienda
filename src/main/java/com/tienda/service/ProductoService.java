@@ -1,7 +1,8 @@
 package com.tienda_losLunes.service;
 
-import com.tienda_losLunes.domain.Producto;
-import com.tienda_losLunes.repository.ProductoRepository;
+import com.tienda.domain.Producto;
+import com.tienda.repository.ProductoRepository;
+import com.tienda.service.FirebaseStorageService;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.springframework.transaction.annotation.Transactional;

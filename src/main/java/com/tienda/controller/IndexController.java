@@ -1,6 +1,6 @@
 package com.tienda_losLunes.controller;
 
-import com.tienda.service.CategoriaService;
+import com.tienda_losLunes.service.CategoriaService;
 import com.tienda_losLunes.service.ProductoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

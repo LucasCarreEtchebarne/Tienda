@@ -1,7 +1,7 @@
 package com.tienda_losLunes.controller;
 
-import com.tienda.domain.Usuario;
-import com.tienda.service.RegistroService;
+import com.tienda_losLunes.domain.Usuario;
+import com.tienda_los_Lunes.service.RegistroService;
 import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.sprinAgframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/registro")

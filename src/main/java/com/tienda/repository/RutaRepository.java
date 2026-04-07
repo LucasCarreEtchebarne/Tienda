@@ -1,6 +1,6 @@
-package com.tienda.repository;
+package com.tienda_losLunes.repository;
 
-import com.tienda.domain.Ruta;
+import com.tienda_losLunes.domain.Ruta;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

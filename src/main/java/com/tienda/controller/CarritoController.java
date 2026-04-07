@@ -2,10 +2,10 @@ package com.tienda.controller;
 
 import com.tienda.domain.Item;
 import com.tienda.domain.Factura;
-import com.tienda.domain.Usuario;
+import com.tienda_losLunes.domain.Usuario;
 import com.tienda.service.CarritoService;
 import com.tienda.service.FacturaService;
-import com.tienda.service.UsuarioService;
+import com.tienda_losLunes.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import org.springframework.stereotype.Controller;

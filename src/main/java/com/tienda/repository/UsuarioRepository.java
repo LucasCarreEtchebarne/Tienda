@@ -1,21 +1,24 @@
-package com.tienda.repository;
+package com.tienda_losLunes.repository;
 
-import com.tienda.domain.Usuario;
+import com.tienda_losLunes.domain.Usuario;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+    
     public Optional<Usuario> findByUsernameAndActivoTrue(String username);
-
+    
     public List<Usuario> findByActivoTrue();
-
-    public Optional<Usuario> findByUsername(String username);
-
-    public Optional<Usuario> findByUsernameAndPassword(String username, String password);
-
+    
+    public Optional<Usuario> findByUsername (String username);
+    
+    public Optional<Usuario> findByUsernameAndPassword(String username, String Password);
+    
     public Optional<Usuario> findByUsernameOrCorreo(String username, String correo);
-
-    public boolean existsByUsernameOrCorreo(String username, String correo);
+    
+    public boolean existByUsernameOrCorreo(String username, String correo);
+    
 }

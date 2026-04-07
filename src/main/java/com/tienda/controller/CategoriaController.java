@@ -2,7 +2,7 @@ package com.tienda_losLunes.controller;
 
 import com.tienda.domain.Categoria;
 import org.springframework.ui.Model;
-import com.tienda.service.CategoriaService;
+import com.tienda_losLunes.service.CategoriaService;
 import jakarta.validation.Valid;
 import java.util.Locale;
 import java.util.Optional;

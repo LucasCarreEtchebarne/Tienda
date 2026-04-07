@@ -1,7 +1,7 @@
-package com.tienda.service;
+package com.tienda_losLunes.service;
 
-import com.tienda.domain.Usuario;
-import com.tienda.repository.UsuarioRepository;
+import com.tienda_losLunes.domain.Usuario;
+import com.tienda_losLunes.repository.UsuarioRepository;
 import jakarta.servlet.http.HttpSession;
 import java.util.stream.Collectors;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

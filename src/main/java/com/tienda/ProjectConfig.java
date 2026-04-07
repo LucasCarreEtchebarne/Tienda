@@ -1,6 +1,6 @@
 package com.tienda_losLunes;
 
-import com.tienda.service.RutaService;
+import com.tienda_losLunes.service.RutaService;
 import com.tienda_losLunes.domain.Ruta;
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;

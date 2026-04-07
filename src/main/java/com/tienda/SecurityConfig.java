@@ -1,7 +1,7 @@
 package com.tienda_losLunes;
 
-import com.tienda.domain.Ruta;
-import com.tienda.service.RutaService;
+import com.tienda_losLunes.domain.Ruta;
+import com.tienda_losLunes.service.RutaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
