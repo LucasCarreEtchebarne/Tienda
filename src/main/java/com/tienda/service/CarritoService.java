@@ -3,7 +3,7 @@ package com.tienda.service;
 import com.tienda.domain.*;
 import com.tienda.repository.FacturaRepository;
 import com.tienda.repository.ProductoRepository;
-import com.tienda_losLunes.repository.VentaRepository;
+import com.tienda.repository.VentaRepository;
 
 import jakarta.servlet.http.HttpSession;
 import java.math.BigDecimal;

@@ -23,7 +23,7 @@ public class Factura implements Serializable {
     @Column(name = "id_factura")
     private Integer idFactura;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario") // Nombre de la columna FK en la tabla factura
+    @JoinColumn(name = "id_usuario") 
     private Usuario usuario;
     private LocalDateTime fecha;
     private BigDecimal total;    
@@ -39,3 +39,5 @@ public class Factura implements Serializable {
     @OneToMany(mappedBy = "factura", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Venta> ventas;
 }
+
+

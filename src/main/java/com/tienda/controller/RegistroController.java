@@ -1,7 +1,7 @@
 package com.tienda_losLunes.controller;
 
 import com.tienda_losLunes.domain.Usuario;
-import com.tienda_los_Lunes.service.RegistroService;
+import com.tienda_losLunes.service.RegistroService;
 import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
